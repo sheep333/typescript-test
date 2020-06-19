@@ -1,6 +1,7 @@
+//***** Enum List *****//
 export enum Foods{
     SeaChiken,
-    CatFood
+    Snack
 }
 
 export enum OwnerAction{
@@ -27,7 +28,8 @@ export enum CatAction{
     NoIdea = "なにかにゃ？"
 }
 
-// 猫クラス
+
+//***** Class *****//
 export class Cat {
     name: string
     num: number
@@ -50,7 +52,7 @@ export class Cat {
         } else if (food == Foods.SeaChiken) {
             this.hunger_point = 0;
             return EatAction.Eat;
-        } else if (food == Foods.CatFood){
+        } else if (food == Foods.Snack){
             this.hunger_point -= 40;
             return EatAction.Eat;
         } else {
