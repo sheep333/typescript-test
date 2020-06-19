@@ -59,16 +59,16 @@ var Cat = (function () {
         if (this.point >= 60) {
             return HungerCondition.Hungry;
         }
-        else if (this.point >= 0) {
+        else if (this.point > 0) {
             return HungerCondition.Ok;
         }
-        else if (this.point < 0) {
+        else if (this.point <= 0) {
             return HungerCondition.Full;
         }
     };
     Cat.prototype.receive_action = function (action, food) {
         if (food === void 0) { food = null; }
-        if (this.point > 100) {
+        if (this.point >= 100) {
             return CatAction.Hesitate;
         }
         else {

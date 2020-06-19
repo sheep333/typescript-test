@@ -31,27 +31,27 @@ export enum CatAction{
 export class Cat {
     name: string
     num: number
-    point: number
+    hunger_point: number
 
     constructor(theName: string, theNum: number){
         this.name = theName;
         this.num = theNum;
-        this.point = 0;
+        this.hunger_point = 0;
     }
 
     play(): string{
-        this.point += 10 * this.num;
+        this.hunger_point += 10 * this.num;
         return CatAction.Fun;
     }
 
     eat(food: Foods): EatAction{
-        if (this.point < 0) {
+        if (this.hunger_point < 0) {
             return EatAction.OverEat;
         } else if (food == Foods.SeaChiken) {
-            this.point = 0;
+            this.hunger_point = 0;
             return EatAction.Eat;
         } else if (food == Foods.CatFood){
-            this.point -= 40;
+            this.hunger_point -= 40;
             return EatAction.Eat;
         } else {
             return EatAction.CanNotEat;
@@ -59,17 +59,17 @@ export class Cat {
     }
 
     answer(): string{
-        if(this.point >= 60){
+        if(this.hunger_point >= 60){
             return HungerCondition.Hungry;
-        } else if (this.point > 0){
+        } else if (this.hunger_point > 0){
             return HungerCondition.Ok;
-        } else if (this.point <= 0){
+        } else if (this.hunger_point <= 0){
             return HungerCondition.Full;
         }
     }
 
     receive_action(action: OwnerAction, food: Foods = null): string{
-        if (this.point >= 100){
+        if (this.hunger_point >= 100){
             // 100ポイント以上なら否応無しに暴れる
             return CatAction.Hesitate;
         } else {
